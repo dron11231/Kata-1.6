@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    padding: 1.2rem 1rem;
+    align-items: center;
+    justify-content: space-between; 
+    word-break: break-word; 
+    gap: 16px;
+    background-color: $default-elements-background;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        gap: 16px; 
+    }
+
+    &__nav-link {
+        background: url(../img/burger.svg) no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-right: 16px;
+    }
+
+    &__nav-link:hover {
+        content: "Навигация по сайту"
+    }
+    
+    &__nav-link::after {
+        width: 2px;
+        height: 32px;
+        background-color: $border-color;
+        display: none;
+        position: absolute;
+        left: 56px;
+        content: "";
+    }
+
+    @media (min-width: $screen-md) {
+        &__nav-link::after {
+            display: block;
+        }
+    }
+
+    @media (min-width: $screen-lg) {
+        display: none;
+    }
+}

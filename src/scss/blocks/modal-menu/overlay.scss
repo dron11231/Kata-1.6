@@ -1,0 +1,13 @@
+.overlay {
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    display: none;
+    top: 0;
+    z-index: 2;
+
+    &--show {
+        display: block;
+    }
+}

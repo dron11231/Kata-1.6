@@ -1,0 +1,26 @@
+.slider-repair {
+
+    @media (min-width: $screen-md) {
+        
+        &--hide {
+            height: 170px;
+        }
+
+        &--show {
+            height: 700px;
+        }
+    }
+
+    @media (min-width: 1019px) {
+        &--show {
+            height: 530px;
+        }
+    }
+
+    @media (min-width: 1542px) {
+        &--show {
+            height: 345px;
+        }
+    }
+
+}

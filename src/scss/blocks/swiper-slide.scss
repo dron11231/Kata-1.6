@@ -1,0 +1,43 @@
+.swiper-slide {
+    &--invisible {
+        display: none;
+    }
+
+    &__text {
+        font-family: $main-font-family;
+        font-size: $default-font-size;
+        color: $text-color;
+    }
+
+    &__btn {
+        display: flex;
+        background: $default-elements-background;
+        border: $border-color;
+        border-radius: 6px;
+        width: 240px; 
+        padding: 16px;
+        cursor: pointer;
+    }
+
+    &__btn-brands {
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+    }
+
+    &__btn-repair {
+        flex-direction: column;
+        gap: 64px;
+
+        img {
+            align-self: flex-end;
+        }
+    }
+
+    @media (min-width: 768px) {
+        &__btn {
+            width: 100%;
+        }
+    }
+    
+}

@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'TTLakes';
+    src: url('../fonts/TTLakes-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+  font-family: 'TTLakes';
+  src: url('../fonts/TTLakes-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: $main-font-family;
+    background-color: $main-background;
+    overflow-x: hidden;
+  }
+
+  

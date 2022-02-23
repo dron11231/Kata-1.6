@@ -1,0 +1,47 @@
+.modal-feedback {
+    min-width: 320px;
+    max-width: 440px;
+    padding-top: 24px;
+    right: 0;
+
+    &__close-btn {
+
+        @media (min-width: 768px) {
+            position: absolute;
+            left: -70px;
+            }
+    }
+    
+    &__form {
+        margin-top: $space-between-elements-laptop;
+    }
+    
+    &__input {
+        margin-bottom: $space-between-elements-mobile;
+    }
+    
+    &__textarea {
+        resize: none;
+        font-size: $default-font-size;
+        color: $text-color;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 12px 0 0 16px;
+    }
+    
+    &__privacy-policy {
+        margin-top: $space-between-elements-mobile;
+    }
+    
+    &__btn-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    &__btn {
+        margin-top: 27px;
+    }
+    
+}

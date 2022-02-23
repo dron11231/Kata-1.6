@@ -1,0 +1,10 @@
+.brands {
+
+    &--indent {
+        margin-top: $space-between-blocks-mobile;
+
+        @media (min-width: 1350px) {
+            margin-top: $space-between-blocks-laptop;
+        }
+    }
+}

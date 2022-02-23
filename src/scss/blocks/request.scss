@@ -1,0 +1,33 @@
+.request {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    text-align: center;
+    padding: 0;
+
+    &::after {
+        width: 2px;
+        height: 32px;
+        background-color: $border-color;
+        display: block;
+        content: "";
+        position: absolute;
+        right: 56px;
+    }
+
+    @media (min-width: $screen-lg) {
+        width: auto; 
+        position: static;
+        padding-right: 48px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+        &::after {
+            display: none;
+        }
+    }
+}

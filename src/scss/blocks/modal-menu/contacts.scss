@@ -1,0 +1,16 @@
+.contacts {
+    display: flex;
+    flex-direction: column;
+    margin-top: $space-between-elements-mobile;
+    gap: 12px;
+
+    &__email {
+        font-size: $default-font-size;
+    }
+    
+    &__telephone {
+        font-weight: bold;
+        font-size: $medium-font-size;
+    }
+}
+

@@ -1,0 +1,52 @@
+.service {
+    background-color: $default-elements-background;
+    border-radius: 6px;
+    padding: 16px;
+    width: 260px;
+    height: 200px;
+    box-sizing: border-box;
+    position: relative;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item:not(:first-of-type) {
+        margin-top: $space-between-elements-mobile;
+    }
+
+    &__title {
+        font-size: 14px;
+        color: $caption-color;
+    }
+
+    &__description {
+        font-size: 14px;
+        color: $text-color;
+    }
+
+    &__btn {
+        border-radius: 16px;
+        background-color: $btn-background-color;
+        color: #fff;
+        border: none;
+        font-family: $main-font-family;
+        font-size: 12px;
+        padding: 4px 40px 4px 12px;
+        line-height: 24px;
+        background-image: url(../img/goside.svg);
+        background-repeat: no-repeat;
+        background-position-x: 90%;
+        background-position-y: center;
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        cursor: pointer;
+
+        @media (min-width: 768px) {
+            position: static;
+            
+        }
+    }
+}

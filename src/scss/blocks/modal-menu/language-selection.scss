@@ -1,0 +1,16 @@
+.language-selection {
+    display: flex;
+    gap: 7px;
+
+    &__btn {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: $default-font-size; 
+    
+    };
+    
+    &__btn--active {
+        color: $link-active-color;
+    };
+}

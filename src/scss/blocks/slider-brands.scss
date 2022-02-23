@@ -1,0 +1,18 @@
+.slider-brands {
+    @media (min-width: $screen-md) {
+        
+        &--hide {
+            height: 170px;
+        }
+
+        &--show {
+            height: 365px;
+        }
+    }
+
+    @media (min-width: 1019px) {
+        &--show {
+            height: 265px;
+        }
+    }
+}
