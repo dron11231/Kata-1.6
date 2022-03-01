@@ -8,7 +8,9 @@ window.addEventListener('resize', () => {
     document.location.reload(true);
 }) 
 
-if (screen.width >= 768) {
+const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+if (mediaQuery.matches) {
     const swipers = document.querySelectorAll('.swiper');
     const wrappers = document.querySelectorAll('.swiper-wrapper');
 
@@ -23,7 +25,7 @@ if (screen.width >= 768) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (screen.width < 768) {
+    if (!mediaQuery.matches) {
 
         const swiper = new Swiper('.swiper', {
             pagination: {
@@ -75,14 +77,13 @@ const sectionContentText = document.querySelector('.section-content__p--visibili
 const sectionContentMore = document.querySelector('.section-content__more--visibility')
 
 sectionContentBtn.addEventListener('click', () => {
-    if (sectionContentBtn.classList.contains('section-content__btn--hide')) {
-        sectionContentBtn.classList.remove('section-content__btn--hide');
-        sectionContentBtn.classList.add('section-content__btn--show');
+
+    sectionContentBtn.classList.toggle('section-content__btn--show');
+
+    if (sectionContentBtn.classList.contains('section-content__btn--show')) {
         sectionContentText.style.display = 'block';
         sectionContentMore.style.display = 'block';
     } else {
-        sectionContentBtn.classList.remove('section-content__btn--show');
-        sectionContentBtn.classList.add('section-content__btn--hide');
         sectionContentText.style.display = 'none';
         sectionContentText.style.display = 'none';
     }
@@ -282,9 +283,7 @@ function windowVisibility(item) {
         item.classList.remove('hide-right')
         item.classList.remove('show-right')
         item.style.display = 'flex'
-        if(screen.width < 1440) {
         overlay.classList.add('overlay--show');
-        }
     }
 }
 

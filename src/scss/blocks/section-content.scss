@@ -30,19 +30,16 @@
         align-items: center;
         font-family: $main-font-family;
         cursor: pointer;
+
+        img {
+            transform: rotate(0deg);
+            }
     }
 
     &__btn--show {
 
         img {
         transform: rotate(180deg);
-        }
-    }
-
-    &__btn--hide {
-
-        img {
-        transform: rotate(0deg);
         }
     }
     

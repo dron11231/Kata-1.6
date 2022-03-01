@@ -26,6 +26,7 @@
     }
     
     &__item--active {
+        padding: 6px 14px;
         border: 2px solid #B8FFEC;
         border-radius: 6px;
         background-color: $default-elements-background;
