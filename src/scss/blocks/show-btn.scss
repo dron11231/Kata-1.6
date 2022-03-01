@@ -15,9 +15,6 @@
 
         &__icon {
             transition: all 1s;
-        }
-        
-        &--hide &__icon {
             transform: rotate(0deg);
         }
         

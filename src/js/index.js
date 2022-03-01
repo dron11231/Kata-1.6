@@ -4,27 +4,28 @@ Swiper.use([Navigation, Pagination]);
 import '../../node_modules/swiper/swiper.scss'
 import '../../node_modules/swiper/modules/pagination/pagination.scss'
 
-window.addEventListener('resize', () => {
-    document.location.reload(true);
-}) 
-
-const mediaQuery = window.matchMedia('(min-width: 768px)');
-
-if (mediaQuery.matches) {
-    const swipers = document.querySelectorAll('.swiper');
-    const wrappers = document.querySelectorAll('.swiper-wrapper');
-
-    for(let i = 0; i < swipers.length; i++) {
-        swipers[i].classList.remove('swiper');
-        wrappers[i].classList.remove('swiper-wrapper');
-    }
-} else {
-    const servicesLaptop = document.querySelector('.services-laptop');
-
-    servicesLaptop.style.display = 'none';
-}
-
 document.addEventListener("DOMContentLoaded", () => {
+
+    window.addEventListener('resize', () => {
+        document.location.reload(true);
+    }) 
+    
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    
+    if (mediaQuery.matches) {
+        const swipers = document.querySelectorAll('.swiper');
+        const wrappers = document.querySelectorAll('.swiper-wrapper');
+    
+        for(let i = 0; i < swipers.length; i++) {
+            swipers[i].classList.remove('swiper');
+            wrappers[i].classList.remove('swiper-wrapper');
+        }
+    } else {
+        const servicesLaptop = document.querySelector('.services-laptop');
+    
+        servicesLaptop.style.display = 'none';
+    }
+    
     if (!mediaQuery.matches) {
 
         const swiper = new Swiper('.swiper', {
@@ -70,13 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         }
-})
 
-const sectionContentBtn = document.querySelector('.section-content__btn');
+        const sectionContentBtn = document.querySelector('.section-content__btn');
 const sectionContentText = document.querySelector('.section-content__p--visibility');
 const sectionContentMore = document.querySelector('.section-content__more--visibility')
 
-sectionContentBtn.addEventListener('click', () => {
+sectionContentBtn.addEventListener('click', function btnToggler() {
 
     sectionContentBtn.classList.toggle('section-content__btn--show');
 
@@ -140,27 +140,18 @@ function visibilityHandler(slider, btn, visibleClass) {
     const slides = slider.querySelectorAll('.swiper-slide');
     const btnText = btn.querySelector('.show-btn__text');
 
-    if (slider.classList.contains('slider-brands--show') || slider.classList.contains('slider-repair--show')) {
+    slider.classList.toggle(visibleClass);
+    btn.classList.toggle('show-btn--show')
 
-        slider.classList.remove('slider-brands--show');
-        slider.classList.remove('slider-repair--show');
+    if (!slider.classList.contains(visibleClass)) {
 
-        if(slider.classList.contains('slider-brands')) {
-            slider.classList.add('slider-brands--hide');
-        } else {
-            slider.classList.add('slider-repair--hide')
-        }
-
-            btnText.innerHTML = 'Показать все'
-            btn.classList.remove('show-btn--show');
-            btn.classList.add('show-btn--hide');
+        btnText.innerHTML = 'Показать все'
 
         if (screen.width >= 1803) {
             if (slider === sliderRepair) {
                 setTimeout( () => displayHandler(slides, 7, 'none'), 1000)
             }
         }
-        
         if (screen.width >= 1542 && screen.width < 1803) {
             if (slider === sliderBrands) {
                 setTimeout( () => displayHandler(slides, 1, 'block'), 1000)
@@ -193,69 +184,58 @@ function visibilityHandler(slider, btn, visibleClass) {
 
 
     } else {
-        slider.classList.remove('slider-brands--hide');
-        slider.classList.remove('slider-repair--hide');
-
-        if (slider.classList.contains('slider-brands')) {
-            slider.classList.add('slider-brands--show');
+        btnText.innerHTML = 'Скрыть';
+        
+        if (slider === sliderBrands) {
+            displayHandler(slides, 1, 'block');
         } else {
-            slider.classList.add('slider-repair--show');
+            displayHandler(slides, 1, 'block');
         }
- 
-            btnText.innerHTML = 'Скрыть';
-            btn.classList.remove('show-btn--hide');
-            btn.classList.add('show-btn--show');
-
-            if (slider === sliderBrands) {
-                displayHandler(slides, 1, 'block');
-            } else {
-                displayHandler(slides, 1, 'block');
-            }
     }
 }
 
-showBtnBrands.addEventListener('click', () => visibilityHandler(sliderBrands, showBtnBrands));
-showBtnRepair.addEventListener('click', () => visibilityHandler(sliderRepair, showBtnRepair))
+showBtnBrands.addEventListener('click', () => visibilityHandler(sliderBrands, showBtnBrands, 'slider-brands--show'));
+showBtnRepair.addEventListener('click', () => visibilityHandler(sliderRepair, showBtnRepair, 'slider-repair--show'));
 
 let activityChecker = function(arr, activeClass) {
-    for(let i = 0; i < arr.length; i++) {
-        if(arr[i].classList.contains(activeClass)) {
-            arr[i].classList.remove(activeClass)
+    arr.forEach(el => {
+        if(el.classList.contains(activeClass)) {
+            el.classList.remove(activeClass)
         }
-    }
+    })
 }
 
-let modalMenuItems = document.querySelectorAll('.modal-menu__list-item');
-let menuItems = document.querySelectorAll('.menu__item');
+const modalMenuItems = document.querySelectorAll('.modal-menu__list-item');
+const menuItems = document.querySelectorAll('.menu__item');
 
-for (let i = 0; i< menuItems.length; i++) {
-    menuItems[i].addEventListener('click', () => {
+menuItems.forEach(el => {
+    el.addEventListener('click', () => {
         activityChecker(menuItems, 'menu__item--active');
-        menuItems[i].classList.add('menu__item--active');
+        el.classList.add('menu__item--active');
     })
-}
+});
 
-for (let i = 0; i < modalMenuItems.length; i++) {
-    modalMenuItems[i].addEventListener('click', () => {
+modalMenuItems.forEach(el => {
+    el.addEventListener('click', () => {
         activityChecker(modalMenuItems, 'modal-menu__list-item--active');
-        modalMenuItems[i].classList.add('modal-menu__list-item--active');
+        el.classList.add('modal-menu__list-item--active');
     })
-}
+});
 
-let body = document.querySelector('body');
-let modalFeedback = document.querySelector('.modal-feedback');
-let modalCall = document.querySelector('.modal-call');
-let modalWindow = document.querySelector('.modal-main-menu');
-let overlay = document.querySelector('.overlay');
+const body = document.querySelector('body');
+const modalFeedback = document.querySelector('.modal-feedback');
+const modalCall = document.querySelector('.modal-call');
+const modalWindow = document.querySelector('.modal-main-menu');
+const overlay = document.querySelector('.overlay');
 
-let phoneBtns = document.querySelectorAll('.action--open-feedback');
-let chatBtns = document.querySelectorAll('.action--open-back-call');
-let burgerBtn = document.querySelector('.header__nav-link');
-let menuBtn = document.querySelector('.main-menu__btn');
-let closeBtn = document.querySelector('.modal-main-menu__btn');
-let feedbackCloseBtn = document.querySelector('.modal-feedback__close-btn')
-let callCloseBtn = document.querySelector('.modal-call__close-btn')
-let modals = document.querySelectorAll('.modal');
+const phoneBtns = document.querySelectorAll('.action--open-feedback');
+const chatBtns = document.querySelectorAll('.action--open-back-call');
+const burgerBtn = document.querySelector('.header__nav-link');
+const menuBtn = document.querySelector('.main-menu__btn');
+const closeBtn = document.querySelector('.modal-main-menu__btn');
+const feedbackCloseBtn = document.querySelector('.modal-feedback__close-btn')
+const callCloseBtn = document.querySelector('.modal-call__close-btn')
+const modals = document.querySelectorAll('.modal');
 
 
 function windowVisibility(item) {
@@ -312,7 +292,7 @@ overlay.addEventListener('click', () => {
 })
 
 if (screen.height < 610) {
-    let stickyWrappers = document.querySelectorAll('.sticky-wrapper');
+    const stickyWrappers = document.querySelectorAll('.sticky-wrapper');
     stickyWrappers.forEach(el => {
         el.style.position = 'static';
     }) 
@@ -320,4 +300,7 @@ if (screen.height < 610) {
 
 modals.forEach(elem => {
     elem.style.height = body.offsetHeight + 'px';
-}) 
+})
+})
+
+ 
