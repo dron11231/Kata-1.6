@@ -136,7 +136,7 @@ if (screen.width >= 768 && screen.width < 1019) {
     
 }
 
-function visibilityHandler(slider, btn) {
+function visibilityHandler(slider, btn, visibleClass) {
     const slides = slider.querySelectorAll('.swiper-slide');
     const btnText = btn.querySelector('.show-btn__text');
 
